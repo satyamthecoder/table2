@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiplication Table Generator</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background: #fff;
+      margin: 80px auto;
+      padding: 30px;
+      width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    input {
+      width: 200px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #4facfe;
+      border-radius: 10px;
+      outline: none;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #4facfe;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #00c6fb;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 80%;
+    }
+
+    td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: center;
+    }
+
+    td:nth-child(odd) {
+      background: #f9f9f9;
+    }
+
+    td:nth-child(even) {
+      background: #eef7ff;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Multiplication Table Generator</h1>
+    <input type="number" id="num" placeholder="Enter a positive number">
+    <br>
+    <button onclick="generateTable()">Show Table</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function generateTable() {
+      let n = document.getElementById("num").value;
+      let resultDiv = document.getElementById("result");
+
+      if (n <= 0) {
+        resultDiv.innerHTML = "<p class='error'>⚠️ Please enter a positive number!</p>";
+        return;
+      }
+
+      let output = "<h2>Table of " + n + "</h2><table>";
+      for (let i = 1; i <= 10; i++) {
+        output += "<tr><td>" + n + " × " + i + "</td><td>" + (n * i) + "</td></tr>";
+      }
+      output += "</table>";
+
+      resultDiv.innerHTML = output;
+    }
+  </script>
+</body>
+</html>
